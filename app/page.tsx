@@ -4,7 +4,7 @@ import Head from "next/head";
 
 export default function Home() {
   const router = useRouter();
-  const { alias, ...urlParams } = router.query;
+  const { alias = '', ...urlParams } = router?.query || {};
 
   // Construct the iframe src URL
   const baseUrl = "https://embed.tour.video";

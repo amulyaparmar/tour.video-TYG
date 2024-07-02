@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function DynamicIframe({ alias, initialSearchParams }) {
+export default function DynamicIframe({ alias='@vue32', initialSearchParams }) {
   const searchParams = useSearchParams();
   const [iframeSrc, setIframeSrc] = useState("");
 
