@@ -9,6 +9,7 @@ export default function DynamicIframe({ alias, initialSearchParams }) {
 
   useEffect(() => {
     const baseUrl = "https://embed.tour.video";
+    console.log("aliasTYG: ", alias);
     const queryString = new URLSearchParams({
       uuid: alias,
       ...Object.fromEntries(searchParams.entries()),

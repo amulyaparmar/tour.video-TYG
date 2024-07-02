@@ -9,8 +9,9 @@ export default function DynamicIframe({ alias, initialSearchParams }) {
 
   useEffect(() => {
     const baseUrl = "https://new-videomagnet.onrender.com";
+    console.log("alaisTYG: ", alias);
     const queryString = new URLSearchParams({
-      uuid: alias,
+      uuid: alias.replace("%40", "@"), // for some reason the url stringifies '@' to '%40' so I am just replacing it to pass in the data TYG
       ...Object.fromEntries(searchParams.entries()),
     }).toString();
     setIframeSrc(`${baseUrl}?${queryString}`);
