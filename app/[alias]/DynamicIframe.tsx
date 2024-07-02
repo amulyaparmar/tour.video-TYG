@@ -17,21 +17,20 @@ export default function DynamicIframe({ alias='@vue32', initialSearchParams }) {
     setIframeSrc(`${baseUrl}?${queryString}`);
   }, [alias, searchParams]);
 
-  if (!iframeSrc) {
-    return <div>Loading...</div>;
-  }
+  
+  const fullScreenStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    border: "none",
+  };
 
   return (
     <iframe
       src={iframeSrc}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        border: "none",
-      }}
+      style={fullScreenStyle}
       allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *; clipboard-write"
       allowFullScreen
     />
