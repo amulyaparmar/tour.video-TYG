@@ -12,6 +12,8 @@ export default function DynamicIframe({ alias='@vue32', initialSearchParams }) {
     console.log("aliasTYG: ", alias);
     const queryString = new URLSearchParams({
       uuid: alias.replace("%40", "@"), // for some reason the url stringifies '@' to '%40' so I am just replacing it to pass in the data TYG
+      inline: "true",
+      isTwoColumn: "true",
       ...Object.fromEntries(searchParams.entries()),
     }).toString();
     setIframeSrc(`${baseUrl}?${queryString}`);
