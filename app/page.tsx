@@ -406,7 +406,7 @@ export default function Home() {
             <img src="/placeholder.svg" width={40} height={40} className="rounded-full" alt="Avatar 5" />
           </div> */}
           <span className="px-3 py-1 text-sm bg-gray-100 rounded-full">
-            Loved by 200+ Communities & Property Managers
+            Loved by 2000+ Communities & Property Managers
           </span>
         </div>
         <h1 className="mt-6 text-4xl font-bold sm:text-5xl md:text-6xl">
