@@ -386,7 +386,7 @@ export default function Home() {
           <a href="#" className="text-lg">
             EN
           </a>
-          <a  href="https://app.usetour.com/book-demo"
+          <a  href="https://app.usetour.com/signin"
              target="_blank" className="text-lg">
             Sign In
           </a>
