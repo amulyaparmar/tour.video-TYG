@@ -463,7 +463,7 @@ export default function Home() {
       </div>
     </div>
     <div className="flex items-center">
-      <div className="mr-8">
+      <div className="mr-8 hidden md:block">
         <p className="text-sm font-semibold">Business</p>
         <ul className="text-xs text-gray-600">
           <li>Terms and conditions</li>
@@ -471,7 +471,7 @@ export default function Home() {
           <li>Contact</li>
         </ul>
       </div>
-      <div>
+      <div className="hidden md:block">
         <p className="text-sm font-semibold flex items-center">
           <span className="mr-1">☀️</span> Support
         </p>
