@@ -25,7 +25,7 @@ export async function generateMetadata({ params, searchParams }) {
     community = tempCommunity;
     error = tempError;
 
-  } else if (parseInt(alias)) {
+  } else if (!alias?.includes("-") && parseInt(alias)) {
     // alias is id
     const { data: tempCommunity,  error: tempError } = await supabase
       .from('Community')
@@ -48,7 +48,7 @@ export async function generateMetadata({ params, searchParams }) {
     error = tempError;
   }
 
-  let ogImageUrl = `https://tour.video/api/og?id=${params?.alias?.replace("%40", "@")}`;
+  let ogImageUrl = `https://tour.video/api/og?id=${params?.alias?.replace("%40", "@")}${params?.screen ? `&screen=${params?.screen}` : ""}`;
   console.log("ogImageUrlTYG: ", ogImageUrl);
 
   if (error || !community) {

@@ -10,6 +10,7 @@ const plusJakartaSansMedium = await fetch(
 export async function GET(request: any) {
   const { searchParams } = new URL(request.url);
   let alias =  searchParams.get('id');
+  // const { searchParams } = new URL(request.url);
 
   const fontMedium =  await plusJakartaSansMedium;
 
@@ -33,7 +34,7 @@ export async function GET(request: any) {
       community = tempCommunity;
       error = tempError;
   
-    } else if (parseInt(alias)) {
+    } else if (!alias?.includes("-") && parseInt(alias)) {
       // alias is id
       const { data: tempCommunity,  error: tempError } = await supabase
         .from('Community')
@@ -60,10 +61,10 @@ export async function GET(request: any) {
 
 
   const tour = community?.community_magnets;
-  const startScreen = tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
+  const startScreen =  searchParams.get('screen') || tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
   const initialScreenData =
-    tour.magnet_details.template.categories[(startScreen || tour.magnet_details.template.default_config.startScreen).split(".")[0]].screens[
-        (startScreen || tour?.magnet_details.template.default_config.startScreen).split(".")[1]
+    tour.magnet_details.template.categories[(startScreen).split(".")[0]].screens[
+        (startScreen).split(".")[1]
     ];
   // console.log({ initialScreenData });
 
