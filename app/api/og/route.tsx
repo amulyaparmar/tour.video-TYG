@@ -26,7 +26,7 @@ export async function GET(request: any) {
       alias = alias.replace("@", "");
       const { data: tempCommunity, error: tempError } = await supabase
         .from('Community')
-        .select('id, name, img_url')
+        .select('id, name, img_url, community_magnets(*)')
         .eq('alias', alias )
         // get all the community_magnets child elements too
         .single();
@@ -37,7 +37,7 @@ export async function GET(request: any) {
       // alias is id
       const { data: tempCommunity,  error: tempError } = await supabase
         .from('Community')
-        .select('id, name, img_url')
+        .select('id, name, img_url, community_magnets(*)')
         .eq('id', alias )
         // get all the community_magnets child elements too
         .single();
@@ -48,7 +48,7 @@ export async function GET(request: any) {
       // alias is uuid
       const { data: tempCommunity,  error: tempError } = await supabase
         .from('Community')
-        .select('id, name, img_url')
+        .select('id, name, img_url, community_magnets(*)')
         .eq('community_magnets', alias )
         // get all the community_magnets child elements too
         .single();
@@ -58,11 +58,22 @@ export async function GET(request: any) {
   
     console.log("communityTYG: ", community);
 
+
+  const tour = community?.community_magnets;
+  const startScreen = tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
+  const initialScreenData =
+    tour.magnet_details.template.categories[(startScreen || tour.magnet_details.template.default_config.startScreen).split(".")[0]].screens[
+        (startScreen || tour?.magnet_details.template.default_config.startScreen).split(".")[1]
+    ];
+  // console.log({ initialScreenData });
+
+  const { name: communityName, img_url } = community;
+  const imageUrl = initialScreenData?.img ||img_url || "";
+
   if (error) {
     return new Response('Community not found', { status: 404 });
   }
 
-  const { name: communityName, img_url: imageUrl } = community;
 
 
   return new ImageResponse(
@@ -76,7 +87,8 @@ export async function GET(request: any) {
           width: '100%',
           height: '100%',
           backgroundImage: `url(${imageUrl})`,
-          backgroundSize: 'cover',
+          // backgroundSize: 'cover',
+          backgroundSize: "100% 100%",
           backgroundPosition: 'center',
           color: 'white',
           padding: '50px',
@@ -162,3 +174,4 @@ export async function GET(request: any) {
     },
   );
 }
+
