@@ -8,7 +8,7 @@ export default function DynamicIframe({ alias='@vue32', initialSearchParams }) {
   const [iframeSrc, setIframeSrc] = useState("");
 
   useEffect(() => {
-    const baseUrl = "https://new-videomagnet.onrender.com";
+    const baseUrl = "https://v2.embed.tours";
     console.log("aliasTYG: ", alias);
     const queryString = new URLSearchParams({
       uuid: alias.replace("%40", "@"), // for some reason the url stringifies '@' to '%40' so I am just replacing it to pass in the data TYG

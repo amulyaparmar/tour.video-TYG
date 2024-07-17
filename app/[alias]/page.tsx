@@ -8,7 +8,6 @@ export async function generateMetadata({ params, searchParams }) {
   let error = null;
   // Fetch the community data using the alias
   // if params alias includes "@" filter by alias, else if alias is just anumber, then filter by id else filter by community_magnets (supabase filter for all)
-
   if (alias?.includes("@")) {
     alias = alias.replace("@", "");
     const { data: tempCommunity, error: tempError } = await supabase
