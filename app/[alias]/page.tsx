@@ -2,11 +2,6 @@ import DynamicIframe from "./DynamicIframe";
 import { supabase } from '@/utils/supabase';
 
 export async function generateMetadata({ params, searchParams }) {
-  let tempParams = {
-    alias: "@vue32",
-    cid: 176,
-    uuid: ""
-  }
 
   let alias = params?.alias.replace("%40","@") || "";
   let community: any = {};
@@ -48,7 +43,7 @@ export async function generateMetadata({ params, searchParams }) {
     error = tempError;
   }
 
-  let ogImageUrl = `https://tour.video/api/og?id=${params?.alias?.replace("%40", "@")}${params?.screen ? `&screen=${params?.screen}` : ""}`;
+  let ogImageUrl = `https://tour.video/api/og?id=${params?.alias?.replace("%40", "@")}${searchParams?.screen ? `&screen=${searchParams?.screen}` : ""}`;
   console.log("ogImageUrlTYG: ", ogImageUrl);
 
   if (error || !community) {
