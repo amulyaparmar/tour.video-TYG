@@ -1,6 +1,3 @@
-"use client";
-import { useRouter } from "next/navigation";
-import Head from "next/head";
 
 const communitySliderData = [
   {
@@ -364,6 +361,14 @@ const communitySliderData = [
     tourLink: '',
   },
 ];
+
+// generateMetadata function is used to generate metadata for the page
+export const generateMetadata = () => ({
+  title: "Tour.video - Interactive, virtual tours that get your apartment more leases",
+  description: "An intelligent way to convert anonymous visitors into qualified leads",
+  image: "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/7b8c9e7b-4b7e-4b3f-1c1f-0b6e3e5e4f00/400pxHeight",
+  url: "https://app.usetour.com",
+});
 
 export default function Home() {
   return (
