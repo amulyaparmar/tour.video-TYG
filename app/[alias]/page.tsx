@@ -67,11 +67,11 @@ export async function generateMetadata({ params, searchParams }) {
           width: 1200,
           height: 630,
         },
-        {
-          url: "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original"
-          width: 400,
-          height: 208,
-        }
+        // {
+        //   url: "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
+        //   width: 400,
+        //   height: 208,
+        // }
       ],
     },
     twitter: {
