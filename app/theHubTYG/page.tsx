@@ -48,7 +48,7 @@ export default function AliasPage({ params, searchParams }) {
           showAccessoryButtons: 'false',
           primaryColor:"#4158d0",
           color:"#4158d0",
-          screen: "intro.intro_video_2"
+          // screen: "intro.intro_video_2"
         });
       }
     };
