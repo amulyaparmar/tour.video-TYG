@@ -55,6 +55,8 @@ export async function generateMetadata({ params, searchParams }) {
     };
   }
 
+  
+
   return {
     title: `Virtual Tour - ${community.name}`,
     description: `Take a virtual tour of ${community.name}`,
@@ -73,6 +75,7 @@ export async function generateMetadata({ params, searchParams }) {
         //   height: 208,
         // }
       ],
+      
     },
     twitter: {
       card: 'summary_large_image',

@@ -4,7 +4,7 @@ import { supabase } from '@/utils/supabase';
 export async function generateMetadata({params, searchParams}) {
 
   // The base64 encoded string
-const v = "eyJ1cmwiOiJodHRwczovL3RvdXItcm9vbXMuc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9yZWNvcmRpbmdzL2JlYW0vNjVmYmI0ZmRjYmZmMGYwZDZlNTMxNDg0LzIwMjQwNzMxL1JlYy02NWZiYjRmZGNiZmYwZjBkNmU1MzE0ODQtMTcyMjQzODQ3Mjk1Ni5tcDQiLCJjb2xvciI6IiMyODY3YjgifQ==";
+const v = params?.v.replaceAll("%3D","") || "";
 
 // Decode the base64 string
 const decodedString = atob(v);
