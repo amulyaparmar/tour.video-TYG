@@ -1,32 +1,70 @@
-"use client"
-import React, { useEffect } from 'react';
+import React from 'react';
 import { supabase } from '@/utils/supabase';
 
-// export async function generateMetadata() {
-//   return {
-//     title: `Tour.video - Sample Work`,
-//     description: `Take a virtual tour of our sample work`,
-//     openGraph: {
-//       title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
-//       description: `Explore our community tours virtually!`,
-//       images: [
-//         {
-//           url: "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
-//           width: 400,
-//           height: 208,
-//         }
-//       ],
-//     },
-//     twitter: {
-//       card: 'summary_large_image',
-//       title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
-//       description: `Explore our community tours virtually!`,
-//       images: [
-//         "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
-//       ],
-//     },
-//   };
-// }
+export async function generateMetadata({params, searchParams}) {
+
+  // The base64 encoded string
+const v = "eyJ1cmwiOiJodHRwczovL3RvdXItcm9vbXMuc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9yZWNvcmRpbmdzL2JlYW0vNjVmYmI0ZmRjYmZmMGYwZDZlNTMxNDg0LzIwMjQwNzMxL1JlYy02NWZiYjRmZGNiZmYwZjBkNmU1MzE0ODQtMTcyMjQzODQ3Mjk1Ni5tcDQiLCJjb2xvciI6IiMyODY3YjgifQ==";
+
+// Decode the base64 string
+const decodedString = atob(v);
+
+// Parse the JSON string
+const jsonObject = JSON.parse(decodedString);
+
+console.log(jsonObject);
+
+// Extract the URL from the JSON object
+const url = jsonObject.url;
+
+// Extract the date part from the URL using a regular expression
+const dateMatch = url.match(/\/(\d{8})\//);
+let formattedDate = ""
+if (dateMatch) {
+  // The date string in YYYYMMDD format
+  const dateString = dateMatch[1];
+  
+  // Parse the date string
+  const year = dateString.substring(0, 4);
+  const month = dateString.substring(4, 6);
+  const day = dateString.substring(6, 8);
+  
+  // Create a JavaScript Date object
+  const date = new Date(year, month - 1, day); // Note: month is 0-indexed
+  
+  // Format the date as needed (e.g., YYYY-MM-DD)
+  formattedDate = `${month}-${day}-${year}`;
+  
+  console.log(`Extracted date: ${formattedDate}`); // Outputs: "Extracted date: 2024-07-31"
+} else {
+  console.log("No date found in the URL.");
+}
+
+
+  return {
+    title: `Tour.video Recording ${formattedDate ? `- ${formattedDate}` : ""}`,
+    description: `Take a virtual tour of our sample work`,
+    openGraph: {
+      title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
+      description: `Explore our community tours virtually!`,
+      images: [
+        {
+          url: "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
+          width: 400,
+          height: 208,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
+      description: `Explore our community tours virtually!`,
+      images: [
+        "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
+      ],
+    },
+  };
+}
 
 export default function AliasPage({ params, searchParams }) {
   // useEffect(() => {
