@@ -62,7 +62,9 @@ export async function generateMetadata({ params, searchParams }) {
         (startScreen).split(".")[1]
     ];
   
-  const videoUrl = initialScreenData?.video || ""
+  const videoUrl = initialScreenData?.video || "";
+  const iframeEnabled = initialScreenData?.iframe?.enabled || false;
+
     console.log("videoUrlTYG: ", videoUrl)
   return {
     title: `Virtual Tour - ${community.name}`,
@@ -82,7 +84,7 @@ export async function generateMetadata({ params, searchParams }) {
         //   height: 208,
         // }
       ],
-      videos: videoUrl ? [
+      videos: videoUrl && !iframeEnabled ? [
         {
           url: videoUrl,
           width: 1280,
@@ -97,7 +99,7 @@ export async function generateMetadata({ params, searchParams }) {
       title: `Virtual Tour - ${community.name}`,
       description: `Take a virtual tour of ${community.name}`,
       images: [ogImageUrl],
-      players: videoUrl ? [
+      players: videoUrl && !iframeEnabled ? [
         {
           playerUrl: videoUrl,
           streamUrl: videoUrl,
