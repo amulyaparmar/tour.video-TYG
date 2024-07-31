@@ -45,8 +45,8 @@ if (dateMatch) {
     title: `Tour.video Recording ${formattedDate ? `- ${formattedDate}` : ""}`,
     description: `Take a virtual tour of our sample work`,
     openGraph: {
-      title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
-      description: `Explore our community tours virtually!`,
+      title: `Tour.video Recording ${formattedDate ? `- ${formattedDate}` : ""}`,
+      description: `Explore our recording virtually!`,
       images: [
         {
           url: "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
