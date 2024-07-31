@@ -80,6 +80,7 @@ export async function generateMetadata({ params, searchParams }) {
       description: `Take a virtual tour of ${community.name}`,
       images: [ogImageUrl],
     },
+    
   };
 }
 

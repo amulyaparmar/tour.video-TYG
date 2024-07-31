@@ -54,15 +54,39 @@ if (dateMatch) {
           height: 208,
         }
       ],
+      videos: [
+        {
+          url: jsonObject?.url,
+          width: 1280,
+          height: 720,
+          type: "video/mp4",
+        },
+      ],
     },
+    // twitter: {
+    //   card: 'summary_large_image',
+    //   title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
+    //   description: `Explore our community tours virtually!`,
+      
+    // },
     twitter: {
-      card: 'summary_large_image',
-      title: `Tour.video & LeaseMagnets - A few of our Community Tours`,
-      description: `Explore our community tours virtually!`,
+      card: 'player',
+      // site: '@site',
+      // creator: '@creator',
+      title: `Tour.video Recording ${formattedDate ? `- ${formattedDate}` : ""}`,
       images: [
         "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1bd9561c-0fe2-4dab-52d1-a559785d4c00/original",
       ],
+      players: [
+        {
+          playerUrl: jsonObject?.url,
+          streamUrl: jsonObject?.url,
+          width: 1280,
+          height: 720,
+        },
+      ],
     },
+    
   };
 }
 
