@@ -57,12 +57,16 @@ export async function generateMetadata({ params, searchParams }) {
 
   const tour = community?.community_magnets;
   const startScreen =  searchParams?.screen ? searchParams?.screen : tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
+  const ogVid =  searchParams?.ogVid ? true : false;
+  
   const initialScreenData =
     tour.magnet_details.template.categories[(startScreen).split(".")[0]].screens[
         (startScreen).split(".")[1]
     ];
   
-  const videoUrl = initialScreenData?.video || ""
+  const videoUrl = initialScreenData?.video || "";
+  const iframeEnabled = initialScreenData?.iframe?.enabled || false;
+
     console.log("videoUrlTYG: ", videoUrl)
   return {
     title: `Virtual Tour - ${community.name}`,
@@ -82,7 +86,7 @@ export async function generateMetadata({ params, searchParams }) {
         //   height: 208,
         // }
       ],
-      videos: videoUrl ? [
+      videos: ogVid && videoUrl && !iframeEnabled ? [
         {
           url: videoUrl,
           width: 1280,
@@ -97,7 +101,7 @@ export async function generateMetadata({ params, searchParams }) {
       title: `Virtual Tour - ${community.name}`,
       description: `Take a virtual tour of ${community.name}`,
       images: [ogImageUrl],
-      players: videoUrl ? [
+      players: ogVid && videoUrl && !iframeEnabled ? [
         {
           playerUrl: videoUrl,
           streamUrl: videoUrl,
