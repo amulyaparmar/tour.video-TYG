@@ -56,7 +56,7 @@ export async function generateMetadata({ params, searchParams }) {
   }
 
   const tour = community?.community_magnets;
-  const startScreen =  searchParams?.screen ? searchParams?.get('screen') : tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
+  const startScreen =  searchParams?.screen ? searchParams?.screen : tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
   const initialScreenData =
     tour.magnet_details.template.categories[(startScreen).split(".")[0]].screens[
         (startScreen).split(".")[1]

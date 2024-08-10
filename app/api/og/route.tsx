@@ -9,7 +9,7 @@ const plusJakartaSansMedium = await fetch(
 
 export async function GET(request: any) {
   const { searchParams } = new URL(request.url);
-  let alias =  searchParams.get('id');
+  let alias =  searchParams?.get('id');
   // const { searchParams } = new URL(request.url);
 
   const fontMedium =  await plusJakartaSansMedium;
