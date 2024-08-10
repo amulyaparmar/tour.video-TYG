@@ -12,7 +12,7 @@ export async function generateMetadata({ params, searchParams }) {
     alias = alias.replace("@", "");
     const { data: tempCommunity, error: tempError } = await supabase
       .from('Community')
-      .select('id, name')
+      .select('id, name, img_url, community_magnets(*)')
       .eq('alias', alias )
       // get all the community_magnets child elements too
       .single();
@@ -23,7 +23,7 @@ export async function generateMetadata({ params, searchParams }) {
     // alias is id
     const { data: tempCommunity,  error: tempError } = await supabase
       .from('Community')
-      .select('id, name')
+      .select('id, name, img_url, community_magnets(*)')
       .eq('id', alias )
       // get all the community_magnets child elements too
       .single();
@@ -34,7 +34,7 @@ export async function generateMetadata({ params, searchParams }) {
     // alias is uuid
     const { data: tempCommunity,  error: tempError } = await supabase
       .from('Community')
-      .select('id, name')
+      .select('id, name, img_url, community_magnets(*)')
       .eq('community_magnets', alias )
       // get all the community_magnets child elements too
       .single();
@@ -55,6 +55,15 @@ export async function generateMetadata({ params, searchParams }) {
     };
   }
 
+  const tour = community?.community_magnets;
+  const startScreen =  searchParams?.screen ? searchParams?.get('screen') : tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
+  const initialScreenData =
+    tour.magnet_details.template.categories[(startScreen).split(".")[0]].screens[
+        (startScreen).split(".")[1]
+    ];
+  
+  const videoUrl = initialScreenData?.video || ""
+    console.log("videoUrlTYG: ", videoUrl)
   return {
     title: `Virtual Tour - ${community.name}`,
     description: `Take a virtual tour of ${community.name}`,
@@ -73,13 +82,31 @@ export async function generateMetadata({ params, searchParams }) {
         //   height: 208,
         // }
       ],
+      videos: videoUrl ? [
+        {
+          url: videoUrl,
+          width: 1280,
+          height: 720,
+          type: "video/mp4",
+        },
+      ] : [],
+      
     },
     twitter: {
       card: 'summary_large_image',
       title: `Virtual Tour - ${community.name}`,
       description: `Take a virtual tour of ${community.name}`,
       images: [ogImageUrl],
+      players: videoUrl ? [
+        {
+          playerUrl: videoUrl,
+          streamUrl: videoUrl,
+          width: 1280,
+          height: 720,
+        },
+      ] : [],
     },
+    
   };
 }
 

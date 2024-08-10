@@ -74,7 +74,9 @@ export async function GET(request: any) {
   if (error) {
     return new Response('Community not found', { status: 404 });
   }
-
+  function removeWordBeforeDash(str) {
+    return str.replace(/^.*\w+\s*-\s*/, '');
+  }
 
 
   return new ImageResponse(
@@ -120,7 +122,7 @@ export async function GET(request: any) {
           }}
         >
           {/* <h1 style={{ fontSize: '65px', margin: 0, fontWeight: 800 }}>Take a Virtual Tour</h1> */}
-          <h2 style={{ fontSize: '50px', margin: 0, fontWeight: 800 }}>{communityName}</h2>
+          <h2 style={{ fontSize: '50px', margin: 0, fontWeight: 800 }}>{removeWordBeforeDash(communityName)}</h2>
         </div>
 
         <div tw="absolute left-0 top-10"
