@@ -414,7 +414,7 @@ export default function Home() {
             Loved by 2000+ Communities & Property Managers
           </span>
         </div>
-        <h1 className="mt-6 text-4xl font-bold sm:text-5xl md:text-6xl">
+        <h1 className="mt-6 text-black text-4xl font-bold sm:text-5xl md:text-6xl">
           Interactive, virtual tours that 
           <br />
           get your apartment more <span className="text-blue-600 bg-blue-100 px-2">leases</span>
