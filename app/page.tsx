@@ -372,6 +372,7 @@ export const generateMetadata = () => ({
 
 export default function Home() {
   return (
+    <>
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       <header className="flex items-center justify-between w-full px-8 py-4">
         <div className="flex items-center space-x-4">
@@ -491,6 +492,7 @@ export default function Home() {
   </footer>
 </div>
     </div>
+</> 
   )
 }
 // This ensures that the page is rendered on the server side
