@@ -8,6 +8,14 @@ const nextConfig = {
     // https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout, for nextjs seo tags
     missingSuspenseWithCSRBailout: false,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://localhost:5174/:path*',
+      },
+    ]
+  },
   async headers() {
     return [
       {
