@@ -11,7 +11,7 @@ const corsHeaders = {
    "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-export const maxDuration = 90;
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
    const { prompt } = await req.json();
