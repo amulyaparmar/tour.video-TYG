@@ -361,6 +361,8 @@ const communitySliderData = [
     tourLink: '',
   },
 ];
+import { redirect } from 'next/navigation';
+
 
 // generateMetadata function is used to generate metadata for the page
 export const generateMetadata = () => ({
@@ -370,7 +372,17 @@ export const generateMetadata = () => ({
   url: "https://app.usetour.com",
 });
 
-export default function Home() {
+export default function Home({ searchParams }) {
+
+  const { uuid, showButton } = searchParams;
+
+  if (uuid && typeof uuid === 'string') {
+    const urlParams = new URLSearchParams(searchParams);
+    urlParams.delete('uuid');
+    redirect(`/${uuid}?${urlParams.toString()}`);
+  } 
+
+
   return (
     <>
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
