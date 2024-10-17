@@ -67,15 +67,38 @@ export async function GET(request: any) {
         (startScreen).split(".")[1]
     ];
   // console.log({ initialScreenData });
+  const isGif =  searchParams.get('gif') || false;
 
   const { name: communityName, img_url } = community;
   const imageUrl = initialScreenData?.img ||img_url || "";
+  const imageGif = initialScreenData?.gif ||img_url || "";
+  const screenTitle = initialScreenData?.title || "TYG";
 
   if (error) {
     return new Response('Community not found', { status: 404 });
   }
 
+  if (isGif) {
+    const response = await fetch(imageGif);
+    const imageBuffer = await response.arrayBuffer();
 
+  return new Response(imageBuffer, {
+    headers: {
+      'Content-Type': 'image/gif', // Change to the appropriate content type
+      'Cache-Control': 'public, max-age=86400', // Cache for 1 day
+      },
+    });
+  }
+
+  const response = await fetch(imageUrl);
+  const imageBuffer = await response.arrayBuffer();
+
+  return new Response(imageBuffer, {
+    headers: {
+      'Content-Type': 'image/png', // Change to the appropriate content type
+      'Cache-Control': 'public, max-age=86400', // Cache for 1 day
+    },
+  });
 
   return new ImageResponse(
     (
@@ -120,7 +143,7 @@ export async function GET(request: any) {
           }}
         >
           {/* <h1 style={{ fontSize: '65px', margin: 0, fontWeight: 800 }}>Take a Virtual Tour</h1> */}
-          <h2 style={{ fontSize: '50px', margin: 0, fontWeight: 800 }}>{communityName}</h2>
+          <h2 style={{ fontSize: '50px', margin: 0, fontWeight: 800 }}>{communityName}{screenTitle ? ` - ${screenTitle}` : ""}</h2>
         </div>
 
         <div tw="absolute left-0 top-10"
