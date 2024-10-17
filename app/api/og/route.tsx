@@ -163,7 +163,7 @@ export async function GET(request: any) {
              }}
           >
             <span tw="text-2xl md:text-4xl  font-bold hover:text-white/80 w-full">{screenTitle ? "View Tour" : "Start Virtual Tour"}</span>
-            <span tw="text-base text-neutral-300">{screenCaption ? screenCaption : "Press play to get started"}</span>
+            <span tw="text-base text-neutral-300">{screen ? screenCaption : "Press play to get started"}</span>
           </div>
         </div>
       </div>
