@@ -62,6 +62,7 @@ export async function GET(request: any) {
 
   const tour = community?.community_magnets;
   const isScreenCustom = searchParams.get('screen') ? true : false;
+  const textHidden = searchParams.get('textHidden') ? true : false;
   const startScreen =  searchParams.get('screen') || tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
   const initialScreenData =
     tour.magnet_details.template.categories[(startScreen).split(".")[0]].screens[
@@ -117,6 +118,7 @@ export async function GET(request: any) {
         />
         <div
           style={{
+            opacity: textHidden ? 0 : 1,
             position: 'relative',
             zIndex: 2,
             display: 'flex',
