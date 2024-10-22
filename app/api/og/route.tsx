@@ -62,6 +62,8 @@ export async function GET(request: any) {
 
   const tour = community?.community_magnets;
   const isScreenCustom = searchParams.get('screen') ? true : false;
+  const customScreenCaption = searchParams.get('screenCaption');
+
   const textHidden = searchParams.get('textHidden') ? true : false;
   const startScreen =  searchParams.get('screen') || tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
   const initialScreenData =
@@ -165,7 +167,7 @@ export async function GET(request: any) {
               display: 'flex',
              }}
           >
-            <span tw="text-2xl md:text-4xl  font-bold hover:text-white/80 w-full">{isScreenCustom ? "View Tour" : "Start Virtual Tour"}</span>
+            <span tw="text-2xl md:text-4xl  font-bold hover:text-white/80 w-full">{customScreenCaption ? customScreenCaption : isScreenCustom ? "View Tour" : "Start Virtual Tour"}</span>
             <span tw="text-base text-neutral-300">{isScreenCustom ? screenCaption : "Press play to get started"}</span>
           </div>
         </div>
