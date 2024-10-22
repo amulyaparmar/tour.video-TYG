@@ -61,6 +61,7 @@ export async function GET(request: any) {
 
 
   const tour = community?.community_magnets;
+  const isScreenCustom = searchParams.get('screen') ? true : false;
   const startScreen =  searchParams.get('screen') || tour?.magnet_details?.template?.default_config?.startScreen || "intro.main";
   const initialScreenData =
     tour.magnet_details.template.categories[(startScreen).split(".")[0]].screens[
@@ -126,7 +127,7 @@ export async function GET(request: any) {
           {/* <h1 style={{ fontSize: '65px', margin: 0, fontWeight: 800 }}>Take a Virtual Tour</h1> */}
           <h2 style={{ paddingBottom: 10, fontSize: '50px', margin: 0, fontWeight: 800 }}>{removeWordBeforeDash(communityName)}</h2>
           {/* add background to the h3  */}
-          {screenTitle ? <h3 style={{ fontSize: '60px', marginTop: 2, fontWeight: 800, background: 'rgba(30.2%, 54.12%, 89.8%, 0.7)', backdropFilter: 'blur(16px)', padding: '10px', borderRadius: '10px' }}>{screenTitle}</h3> : null}
+          {isScreenCustom && screenTitle ? <h3 style={{ fontSize: '60px', marginTop: 2, fontWeight: 800, background: 'rgba(30.2%, 54.12%, 89.8%, 0.7)', backdropFilter: 'blur(16px)', padding: '10px', borderRadius: '10px' }}>{screenTitle}</h3> : null}
         </div>
 
         <div tw="absolute left-0 top-10"
@@ -162,8 +163,8 @@ export async function GET(request: any) {
               display: 'flex',
              }}
           >
-            <span tw="text-2xl md:text-4xl  font-bold hover:text-white/80 w-full">{screenTitle ? "View Tour" : "Start Virtual Tour"}</span>
-            <span tw="text-base text-neutral-300">{screen ? screenCaption : "Press play to get started"}</span>
+            <span tw="text-2xl md:text-4xl  font-bold hover:text-white/80 w-full">{isScreenCustom ? "View Tour" : "Start Virtual Tour"}</span>
+            <span tw="text-base text-neutral-300">{isScreenCustom ? screenCaption : "Press play to get started"}</span>
           </div>
         </div>
       </div>
