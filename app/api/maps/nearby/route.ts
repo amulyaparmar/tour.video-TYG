@@ -61,7 +61,8 @@ export async function POST(request: Request) {
          headers: {
             "Content-Type": "application/json",
             "X-Goog-Api-Key": GOOGLE_MAPS_API_KEY,
-            "X-Goog-FieldMask": "places.displayName,places.id,places.formattedAddress,places.location",
+            "X-Goog-FieldMask":
+               "places.displayName,places.id,places.formattedAddress,places.location,places.iconMaskBaseUri,places.iconBackgroundColor,places.photos",
          },
          body: JSON.stringify(requestBody),
       });
