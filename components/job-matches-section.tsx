@@ -69,7 +69,7 @@ export function JobMatchesSection() {
           </div>
         </div>
         <div className="text-center">
-          <Button size="lg" className="text-lg px-8">
+          <Button size="lg" className="text-lg px-8 bg-black text-white">
             Book a 15-min Demo →
           </Button>
           <p className="mt-4 text-sm text-gray-600 italic">
