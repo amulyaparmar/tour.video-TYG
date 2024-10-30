@@ -13,9 +13,9 @@ export function FeatureSections() {
           <div className="space-y-8">
             <div className="flex items-center space-x-2">
               <Zap className="w-6 h-6 text-blue-500" />
-              <h3 className="text-xl font-semibold text-blue-500">Autofill Applications</h3>
+              <h3 className="text-xl font-semibold text-blue-500">Create the </h3>
             </div>
-            <h2 className="text-4xl font-bold">Autofill repetitive job application questions</h2>
+            <h2 className="text-4xl font-bold">Deliver a stunning guided tour to every single website visitor</h2>
             <p className="text-xl text-gray-600">
               Install the Simplify Copilot extension to autofill your job applications &
               see keywords missing in your resume.
@@ -116,7 +116,7 @@ export function FeatureSections() {
               <FileText className="w-6 h-6 text-green-500" />
               <h3 className="text-xl font-semibold text-green-500">AI Resume Builder</h3>
             </div>
-            <h2 className="text-4xl font-bold">Craft the perfect tailored resume for every job</h2>
+            <h2 className="text-4xl font-bold">Deploy your Tour AI to followup with leads automatically on email/sms and Video ads</h2>
             <p className="text-xl text-gray-600">
               Use AI to tailor your resume to fit the job description, see your resume
               ATS score, and identify missing keywords, all in a few clicks.
