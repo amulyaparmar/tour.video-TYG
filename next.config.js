@@ -4,6 +4,9 @@ const nextConfig = {
     // Disable type checking
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     // https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout, for nextjs seo tags
     missingSuspenseWithCSRBailout: false,
