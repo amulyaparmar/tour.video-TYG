@@ -257,7 +257,7 @@ export default function Home({ searchParams }) {
   return (
     <>
     <LandingPage />
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
+    {/* <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       <header className="flex items-center justify-between w-full px-8 py-4">
         <div className="flex items-center space-x-4">
           <a href="#" className="text-2xl font-bold">
@@ -288,13 +288,7 @@ export default function Home({ searchParams }) {
       </header>
       <main className="flex flex-col items-center justify-center flex-1 w-full px-4 text-center">
         <div className="flex items-center space-x-2">
-          {/* <div className="flex -space-x-2">
-            <img src="/placeholder.svg" width={40} height={40} className="rounded-full" alt="Avatar 1" />
-            <img src="/placeholder.svg" width={40} height={40} className="rounded-full" alt="Avatar 2" />
-            <img src="/placeholder.svg" width={40} height={40} className="rounded-full" alt="Avatar 3" />
-            <img src="/placeholder.svg" width={40} height={40} className="rounded-full" alt="Avatar 4" />
-            <img src="/placeholder.svg" width={40} height={40} className="rounded-full" alt="Avatar 5" />
-          </div> */}
+      
           <span className="px-3 py-1 text-sm bg-gray-100 rounded-full">
             Loved by 2000+ Communities & Property Managers
           </span>
@@ -375,7 +369,7 @@ export default function Home({ searchParams }) {
     <a href="#">Privacy</a>
   </footer>
 </div>
-    </div>
+    </div> */}
 </> 
   )
 }

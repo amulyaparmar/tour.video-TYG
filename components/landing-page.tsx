@@ -183,11 +183,11 @@ export function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center w-full overflow-hidden">
           <h2 className="text-3xl font-bold">
             We help guide the best: <span className="text-blue-500">1.089.1 k</span> tours and counting
           </h2>
-          <div className="mt-8 flex justify-center items-center space-x-8 mb-10">
+          <div className="mt-8 flex justify-center items-center space-x-8 mb-10 w-full">
             {[
     "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/4b8dd8f0-9fc8-4751-68ed-14e7e7b34e00/original",
     "https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/acad94c4-031f-4cdf-8712-71bd264a9900/original",

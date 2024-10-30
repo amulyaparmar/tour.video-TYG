@@ -1,10 +1,15 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Clock, Home, MessageSquare,PlayCircle } from "lucide-react"
 import "./videoPopup.css"
+import { animate, motion, useMotionValue } from "framer-motion";
+import useMeasure from "react-use-measure";
+import TourCard from "./tour-card-TYG"
+import TestimonialCard from "./testimonial-card-TYG";
+
 
 const videoData = [
   {
@@ -87,11 +92,55 @@ export function VirtualLeasingAgentSection() {
     setCurrentVideo('');
   };
 
+  const FAST_DURATION = 25;
+  const SLOW_DURATION = 75;
+
+  const [duration, setDuration] = useState(FAST_DURATION);
+  let [ref, { width }] = useMeasure();
+
+  const xTranslation = useMotionValue(0);
+
+  const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
+
+  useEffect(() => {
+    let controls;
+    let finalPosition = -width / 2 - 8;
+
+    if (mustFinish) {
+      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
+        ease: "linear",
+        duration: duration * (1 - xTranslation.get() / finalPosition),
+        onComplete: () => {
+          setMustFinish(false);
+          setRerender(!rerender);
+        },
+      });
+    } else {
+      controls = animate(xTranslation, [0, finalPosition], {
+        ease: "linear",
+        duration: duration,
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+      });
+    }
+
+    return controls?.stop;
+  }, [rerender, xTranslation, duration, width]);
+
+
 
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
+          <h6 className="pt-10 w-full text-center text-lg font-medium text-gray-800">
+              Customers Stories
+            </h6>
+            <h1 className="text-4xl font-bold text-gray-800 w-full text-center pt-2">
+              Why our 130+ partners love us
+            </h1>
           <h2 className="text-4xl font-bold mb-4">
             You're not alone.
           </h2>
@@ -100,26 +149,42 @@ export function VirtualLeasingAgentSection() {
           </p>
         </div>
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">The Secret Sauce 🤫</h3>
 
 
           <div className="flex items-center justify-center flex-col">
-            <h6 className="pt-10 w-full text-center text-lg font-medium text-gray-800">
-              Customers Stories
-            </h6>
-            <h1 className="text-4xl font-bold text-gray-800 w-full text-center pt-2">
-              What our partners are saying
-            </h1>
+            
             {/* Infinite scrolling cards */}
-            <div className="infinite-carousel w-full flex">
+            {/* <div className="infinite-carousel w-full flex">
               <div className="infinite-carousel-wrapper">
                 {videoData.map((video, index) => (
                   <VideoCard key={index} video={video} onPlay={openPopup} />
                 ))}
               </div>
-            </div>
+            </div> */}
 
           </div>
+
+          <div className="overflow-hidden">
+            <motion.div
+                className="left-0 flex gap-4"
+                style={{ x: xTranslation }}
+                ref={ref}
+                onHoverStart={() => {
+                  setMustFinish(true);
+                  setDuration(SLOW_DURATION);
+                }}
+                onHoverEnd={() => {
+                  setMustFinish(true);
+                  setDuration(FAST_DURATION);
+                }}
+              >
+                {[...videoData, ...videoData].map((item, idx) => (
+                  <TestimonialCard image={`${item?.img}`} video={item?.src} key={idx} />
+                ))}
+            </motion.div>
+          </div>
+
+
           <div className="grid md:grid-cols-3 gap-8">
 
             
