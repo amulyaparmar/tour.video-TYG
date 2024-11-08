@@ -54,12 +54,16 @@ export function MissionStatement() {
               Use guided video, CTAs, special offers, and testimonials to convert 150% more of your website visitors today.
             </p>
             <div className="space-x-4">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                Book 1:1 Consultation
+              <a href="https://app.usetour.com/book-demo" target="_blank">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Book 1:1 Consultation
               </Button>
-              <Button size="lg" variant="outline">
-                Try it out
-              </Button>
+              </a>
+              <a href="https://app.usetour.com/signup" target="_blank">
+                <Button size="lg" variant="outline">
+                  Try it out
+                </Button>
+              </a>
             </div>
           </div>
         </div>

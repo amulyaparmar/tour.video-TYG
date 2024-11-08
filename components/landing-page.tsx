@@ -72,23 +72,30 @@ export function LandingPage() {
             />
           </div>
           <nav className="hidden md:flex space-x-4">
-            <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
-              Features
+            <a href="#features">
+              <Button variant="ghost" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+                Features
+              </Button>
             </a>
-            <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
-              Case Studies
+            <a href="#case-studies">
+              <Button variant="ghost" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+                Case Studies
+              </Button>
             </a>
-            {/* <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
-              Tour Generator
-            </a> */}
-            <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
-              Book Demo
+            <a href="https://app.usetour.com/book-demo">
+              <Button variant="ghost" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+                Book Demo
+              </Button>
             </a>
           </nav>
         </div>
         <div className="flex items-center space-x-4">
-          <Button variant="outline">Log In</Button>
-          <Button>Sign Up</Button>
+          <a href="https://app.usetour.com/signin">
+            <Button variant="outline">Log In</Button>
+          </a>
+          <a href="https://app.usetour.com/signup">
+            <Button>Sign Up</Button>
+          </a>
         </div>
       </header>
       <main className="flex-1">        
@@ -103,9 +110,11 @@ export function LandingPage() {
               If your Tour is your best sales asset, why not deliver it to every website visitor?
               Drive 75% more pre-qualified leads & scheduled appointments with our VLA.
             </p>
-            <Button className="mt-8 px-8 py-3 text-lg bg-black text-white" size="lg">
-              Sign Up - It's Free!
-            </Button>
+            <a href="https://app.usetour.com/signup" target="_blank">
+              <Button className="mt-8 px-8 py-3 text-lg bg-black text-white" size="lg">
+                Sign Up - It's Free!
+              </Button>
+            </a>
             <div className="mt-8 flex justify-center">
               <div className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
@@ -161,7 +170,7 @@ export function LandingPage() {
                 height={60}
               /> */}
               <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0.5, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
@@ -173,6 +182,7 @@ export function LandingPage() {
                     loop
                     muted
                     playsInline
+                    poster="https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/1953e9da-c870-4d2e-8ed6-cd8c6077b000/400pxHeight"
                   >
                     <source src="https://customer-qqdk2u3dbwgfurzm.cloudflarestream.com/8de62a72aa05af492c00486f566e0e91/downloads/default.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
@@ -219,8 +229,12 @@ export function LandingPage() {
         {/* <JobMatchesSection /> */}
         <VirtualLeasingAgentSection />
         {/* <FeatureSections /> */}
-        <FeatureOverview />
-        <MissionStatement />
+        <div id="features">
+          <FeatureOverview />
+        </div>
+        <div id="case-studies">
+          <MissionStatement />
+        </div>
         {/* <TestimonialSection /> */}
 
         <div className="overflow-hidden">
