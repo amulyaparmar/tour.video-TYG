@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Arrow from "@public/images/arrow.svg";
 import Image from "next/image";
@@ -11,16 +11,39 @@ interface TourCardProps {
 
 const TourCard: React.FC<TourCardProps> = ({ image, item }) => {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const isInCenterRange = offset > -40 && offset < 150;
+
+  useEffect(() => {
+    const checkOffset = () => {
+      if (cardRef.current) {
+        const rect = cardRef.current.getBoundingClientRect();
+        const windowCenter = window.innerWidth / 2;
+        const cardCenter = rect.left + rect.width / 2;
+        setOffset(Math.round(cardCenter - windowCenter));
+      }
+    };
+
+    const interval = setInterval(checkOffset, 500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.div
+      ref={cardRef}
       className="relative overflow-hidden h-[200px] min-w-[200px] bg-slate-400 rounded-xl flex justify-center items-center"
       key={image}
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
     >
+      {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-blue-500 text-white px-2 py-1 rounded">
+        {offset}px
+      </div> */}
+
       <AnimatePresence>
-        {showOverlay && (
+        {(showOverlay || isInCenterRange) && (
           <motion.div
             className="absolute left-0 top-0 bottom-0 right-0 z-10 flex flex-col justify-center items-center gap-2"
             initial={{ opacity: 0 }}
