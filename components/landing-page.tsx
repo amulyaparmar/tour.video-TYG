@@ -100,20 +100,35 @@ export function LandingPage() {
       </header>
       <main className="flex-1">        
         <section className="py-12 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              👋 meet your virtual leasing agent.
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="relative text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              <span className="inline-block mb-2">
+                👋 meet your virtual leasing agent.
+              </span>
               <br />
-              get your apartment more leases
+              <span className="relative inline-flex items-center justify-center">
+                get your apartment
+                <span className="relative mx-3 px-6 py-1 bg-blue-500 text-white rounded-lg transform -skew-x-6">
+                  more leases
+                </span>
+              </span>
             </h1>
-            <p className="mt-6 text-lg text-gray-600">
+            <p className="mt-8 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               If your Tour is your best sales asset, why not deliver it to every website visitor?
-              Drive 75% more pre-qualified leads & scheduled appointments with our VLA.
+              <span className="block mt-2 font-medium text-blue-600">
+                Drive 75% more pre-qualified leads & scheduled appointments with our VLA.
+              </span>
             </p>
-            <a href="https://app.usetour.com/signup" target="_blank">
-              <Button className="mt-8 px-8 py-3 text-lg bg-black text-white" size="lg">
-                Sign Up - It's Free!
-              </Button>
+            <a 
+              href="https://app.usetour.com/signup" 
+              target="_blank"
+              className="group relative"
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-200">
+                <Button className="relative mt-10 px-8 py-4 text-lg bg-black text-white hover:bg-gray-900 transition-all duration-200" size="lg">
+                  Sign Up - It's Free!
+                </Button>
+              </div>
             </a>
             <div className="mt-8 flex justify-center">
               <div className="flex items-center space-x-1">
@@ -157,8 +172,15 @@ export function LandingPage() {
           <div className="p-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 rounded-full bg-blue-500" />
-              <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
-                Deliver 4x more tours and create pre-qualified leads
+              <div className="flex items-center gap-4">
+                <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
+                  Deliver 4x more tours and create pre-qualified leads
+                </div>
+                <a href="https://app.usetour.com/signup">
+                  <Button className="bg-blue-500 text-white hover:bg-blue-600">
+                    Get Started Now
+                  </Button>
+                </a>
               </div>
             </div>
             <div className="mt-6 border rounded-lg p-4">
