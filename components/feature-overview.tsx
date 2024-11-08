@@ -80,7 +80,7 @@ export function FeatureOverview() {
           </Card>
           <Card>
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Share Personalized Tours</h3>
+              <h3 className="text-xl font-semibold mb-4">Share Personalized Tours & Followups</h3>
               <div className="relative h-40 bg-gray-200/10 rounded-lg mb-4 overflow-hidden">
                 {/* Browser chrome */}
                 <div className="absolute top-2 left-2 flex space-x-1">
