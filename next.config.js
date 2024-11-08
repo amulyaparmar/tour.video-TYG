@@ -21,6 +21,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'framerusercontent.com',
+      },
     ],
   },
   async rewrites() {

@@ -22,7 +22,7 @@ export function MissionStatement() {
                 </div>
                 <div className="flex items-center mb-6">
                   <Image
-                    src="/placeholder.svg?height=80&width=80"
+                    src="https://framerusercontent.com/images/XaY2nTyVDSeArcqdPnBa54kE.png"
                     alt="Mariana"
                     width={80}
                     height={80}

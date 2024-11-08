@@ -21,35 +21,7 @@ export function JobMatchesSection() {
         </div>
         <div className="mb-16">
           <h3 className="text-2xl font-bold mb-8 text-center">The Secret Sauce 🤫</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <Clock className="w-12 h-12 text-blue-500 mb-4" />
-                <h4 className="text-xl font-semibold mb-2">24/7 Virtual Agent</h4>
-                <p className="text-gray-600">
-                  Your top performer, cloned and working round the clock. No coffee breaks needed. (75% more qualified leads than traditional tours)
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <Home className="w-12 h-12 text-blue-500 mb-4" />
-                <h4 className="text-xl font-semibold mb-2">Remote Closing Machine</h4>
-                <p className="text-gray-600">
-                  Run tours from your couch. Or beach. Or wherever. Close 25% more deals without putting on real pants.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <MessageSquare className="w-12 h-12 text-blue-500 mb-4" />
-                <h4 className="text-xl font-semibold mb-2">Smart Follow-ups That Actually Work</h4>
-                <p className="text-gray-600">
-                  None of that "just checking in" nonsense. Share personalized tours that make prospects think "take my money already."
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+       
         </div>
         <div className="text-center mb-16">
           <h3 className="text-2xl font-bold mb-8">The Numbers Don't Lie</h3>

@@ -149,17 +149,17 @@ export function LandingPage() {
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 rounded-full bg-blue-500" />
               <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
-                Autofill your job applications with 1-click!
+                Deliver 4x more tours and create pre-qualified leads
               </div>
             </div>
             <div className="mt-6 border rounded-lg p-4">
-              <Image
+              {/* <Image
                 src="/placeholder.svg?height=60&width=60"
                 alt="Airbnb logo"
                 className="w-16 h-16"
                 width={60}
                 height={60}
-              />
+              /> */}
               <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -216,16 +216,16 @@ export function LandingPage() {
             ))}
           </div>
         </div>
-        <JobMatchesSection />
+        {/* <JobMatchesSection /> */}
         <VirtualLeasingAgentSection />
-        <FeatureSections />
+        {/* <FeatureSections /> */}
         <FeatureOverview />
         <MissionStatement />
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
 
         <div className="overflow-hidden">
           <motion.div
-              className="left-0 flex gap-4"
+              className="left-0 flex gap-4 mb-10"
               style={{ x: xTranslation }}
               ref={ref}
               onHoverStart={() => {
@@ -252,10 +252,10 @@ export function LandingPage() {
           <div className="flex flex-wrap justify-between items-center">
             <div className="w-full md:w-1/4 mb-6 md:mb-0">
               <Image
-                src="/placeholder.svg?height=60&width=180"
+                src="/images/tour logo TYG dark.svg"
                 alt="Company Logo"
-                width={180}
-                height={60}
+                width={100}
+                height={30}
                 className="h-12 w-auto"
               />
             </div>
@@ -290,7 +290,7 @@ export function LandingPage() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
-            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+            <p>&copy; 2024 UseTour.com. All rights reserved.</p>
           </div>
         </div>
       </footer>
