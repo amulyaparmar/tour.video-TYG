@@ -238,7 +238,7 @@ export function LandingPage() {
               }}
             >
               {[...tourExamplesTYG, ...tourExamplesTYG].map((item, idx) => (
-                <TourCard image={`${item?.cover}`} key={idx} />
+                <TourCard item={item} image={`${item?.cover}`} key={idx} />
               ))}
           </motion.div>
         </div>
