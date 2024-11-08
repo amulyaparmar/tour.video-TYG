@@ -78,9 +78,9 @@ export function LandingPage() {
             <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
               Case Studies
             </a>
-            <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
+            {/* <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
               Tour Generator
-            </a>
+            </a> */}
             <a className="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">
               Book Demo
             </a>
