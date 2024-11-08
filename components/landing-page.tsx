@@ -32,7 +32,7 @@ export function LandingPage() {
 
   useEffect(() => {
     let controls;
-    let finalPosition = -width / 2 - 8;
+    let finalPosition = -width - 8;
 
     if (mustFinish) {
       controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
@@ -153,7 +153,7 @@ export function LandingPage() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
-        <div className="mt-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="mt-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg">
           <div className="p-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 rounded-full bg-blue-500" />
@@ -162,19 +162,13 @@ export function LandingPage() {
               </div>
             </div>
             <div className="mt-6 border rounded-lg p-4">
-              {/* <Image
-                src="/placeholder.svg?height=60&width=60"
-                alt="Airbnb logo"
-                className="w-16 h-16"
-                width={60}
-                height={60}
-              /> */}
-              <motion.div
+              <div className="relative">
+                <motion.div
                   initial={{ opacity: 0.5, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="relative w-full aspect-video overflow-hidden rounded-lg"
+                  className="relative w-full aspect-video  rounded-lg"
                 >
                   <video
                     className="w-[102%] h-full object-cover transform -translate-x-[1%] rounded-lg shadow-xl transition-shadow duration-300 hover:shadow-2xl"
@@ -188,8 +182,37 @@ export function LandingPage() {
                     Your browser does not support the video tag.
                   </video>
                 </motion.div>
-              {/* place a video here that takes full screen, rounded corners, crop in it on the sides left and right by a few pixels , and add strong dropshadow and even stronger dropshadow on hover, and add framer motion on scroll fade in up 
-            */}
+
+                <motion.img
+                  src="https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/7aebb46c-0c32-4129-fe61-554926020500/big"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.6, duration: 0.4 }}
+                  className="absolute -right-[100px] border shadow-lg border-blue-100 rounded-lg bottom-[-75px] -translate-y-1/2 h-[400px] object-contain"
+                  alt="Decorative element"
+                />
+
+                <motion.img
+                  src="https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/37b4fffc-0749-4bc5-5899-462958dd3600/big"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 2.2, duration: 0.4 }}
+                  className="absolute left-[-60px] border shadow-lg border-blue-100/20 rounded-xl bottom-[-60px] -translate-y-1/2 h-[130px] object-contain"
+                  alt="Decorative element"
+                />
+                 <motion.img
+                  src="https://imagedelivery.net/d3WSibrZmE8m_HEZW60OcQ/90ddfdc6-db1f-4e86-bf8c-9c4c5d0db400/big"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 2.4, duration: 0.4 }}
+                  className="absolute left-[-88px] border shadow-lg border-blue-100 rounded-lg bottom-[-50px] -translate-y-1/2 h-[25px] object-contain"
+                  alt="Decorative element"
+                />
+
+              </div>
             </div>
           </div>
         </div>
@@ -251,7 +274,7 @@ export function LandingPage() {
                 setDuration(FAST_DURATION);
               }}
             >
-              {[...tourExamplesTYG, ...tourExamplesTYG].map((item, idx) => (
+              {[...tourExamplesTYG, ...tourExamplesTYG.slice(2,-1)].map((item, idx) => (
                 <TourCard item={item} image={`${item?.cover}`} key={idx} />
               ))}
           </motion.div>
