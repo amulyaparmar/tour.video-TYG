@@ -103,11 +103,15 @@ export function LandingPage() {
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="relative text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               <span className="inline-block mb-2">
-                👋 meet your virtual leasing agent.
+                👋 the virtual leasing agent
               </span>
               <br />
-              <span className="relative inline-flex items-center justify-center">
-                get your apartment
+              <span className="relative inline-flex items-center justify-center text-3xl">
+                that gets your apartment
+                <span className="relative mx-3 px-6 py-1 bg-blue-500 text-white rounded-lg transform -skew-x-6">
+                  4x more tours
+                </span>
+                &
                 <span className="relative mx-3 px-6 py-1 bg-blue-500 text-white rounded-lg transform -skew-x-6">
                   more leases
                 </span>
@@ -119,7 +123,7 @@ export function LandingPage() {
                 Drive 75% more pre-qualified leads & scheduled appointments with our VLA.
               </span>
             </p>
-            <a 
+            {/* <a 
               href="https://app.usetour.com/signup" 
               target="_blank"
               className="group relative"
@@ -129,7 +133,7 @@ export function LandingPage() {
                   Sign Up - It's Free!
                 </Button>
               </div>
-            </a>
+            </a> */}
             <div className="mt-8 flex justify-center">
               <div className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
