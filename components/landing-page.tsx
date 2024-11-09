@@ -244,7 +244,7 @@ export function LandingPage() {
         </div>
         <div className="mt-16 text-center w-full overflow-hidden">
           <h2 className="text-3xl font-bold">
-            We help guide the best: <span className="text-blue-500">1.089.1 k</span> tours and counting
+            We help guide the best: <span className="text-blue-500">1.089 M</span> tours and counting
           </h2>
           <div className="mt-8 flex justify-center items-center space-x-8 mb-10 w-full">
             {[
