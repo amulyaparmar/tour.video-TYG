@@ -106,7 +106,7 @@ export function LandingPage() {
                 👋 the virtual leasing agent
               </span>
               <br />
-              <span className="relative inline-flex items-center justify-center text-3xl">
+              <span className="hidden md:inline-flex relative items-center justify-center text-3xl">
                 that gets your apartment
                 <span className="relative mx-3 px-6 py-1 bg-blue-500 text-white rounded-lg transform -skew-x-6">
                   4x more tours
@@ -119,7 +119,7 @@ export function LandingPage() {
             </h1>
             <p className="mt-8 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               If your Tour is your best sales asset, why not deliver it to every website visitor?
-              <span className="block mt-2 font-medium text-blue-600">
+              <span className="hidden md:block mt-2 font-medium text-blue-600">
                 Drive 75% more pre-qualified leads & scheduled appointments with our VLA.
               </span>
             </p>
@@ -152,7 +152,7 @@ export function LandingPage() {
             </div>
           </div>
         </section>
-        <Tabs defaultValue="interactive-video-tours" className="mt-12">
+        <Tabs defaultValue="interactive-video-tours" className="mt-12 hidden md:block">
           <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto">
             <TabsTrigger value="interactive-video-tours">
               <Video className="w-4 h-4 mr-2" />
@@ -174,7 +174,7 @@ export function LandingPage() {
         </Tabs>
         <div className="mt-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg">
           <div className="p-6">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 hidden">
               <div className="w-12 h-12 rounded-full bg-blue-500" />
               <div className="flex items-center gap-4">
                 <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
@@ -332,7 +332,7 @@ export function LandingPage() {
                   <li><a href="#" className="hover:text-gray-300">Tour Generator</a></li>
                 </ul>
               </div>
-              <div className="w-full sm:w-1/2 md:w-1/4 mb-6 md:mb-0">
+              <div className="w-full sm:w-1/2 md:w-1/4 mb-6 md:mb-0 hidden md:block">
                 <h3 className="text-lg font-semibold  mb-4">Company</h3>
                 <ul className="space-y-2">
                   <li><a href="#" className="hover:text-gray-300">About Us</a></li>
@@ -341,7 +341,7 @@ export function LandingPage() {
                   <li><a href="#" className="hover:text-gray-300">Blog</a></li>
                 </ul>
               </div>
-              <div className="w-full sm:w-1/2 md:w-1/4 mb-6 md:mb-0">
+              <div className="w-full sm:w-1/2 md:w-1/4 mb-6 md:mb-0 hidden md:block">
                 <h3 className="text-lg font-semibold mb-4">Support</h3>
                 <ul className="space-y-2">
                   <li><a href="#" className="hover:text-gray-300">Help Center</a></li>
