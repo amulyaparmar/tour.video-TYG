@@ -1,6 +1,7 @@
 import { supabase } from '@/utils/supabase';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import ActionTabs from '../../../../components/ActionTabs'
 
 type Screen = {
   key: string;
@@ -134,6 +135,9 @@ export default async function ContentLibraryPage({
           + Add Category
         </button>
       </div>
+
+      {/** Button */}
+      <ActionTabs />
 
       {/* Content Sections */}
       {categories.map((categoryKey) => {
