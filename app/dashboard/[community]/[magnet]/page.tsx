@@ -172,6 +172,7 @@ export default async function ContentLibraryPage({
                 <Link
                   key={screen.key}
                   href={`/dashboard/${params.community}/${params.magnet}/${screen.categoryKey}/${screen.key}`}
+                  prefetch={true}
                 >
                   <div className="group cursor-pointer relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
                     <img 

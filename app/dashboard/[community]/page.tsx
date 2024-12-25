@@ -85,7 +85,7 @@ export default async function DashboardPage({
             className="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300"
           >
             <div className="relative h-48 overflow-hidden">
-              <Link href={`/dashboard/${params.community}/${magnet.uuid}`}>
+              <Link href={`/dashboard/${params.community}/${magnet.uuid}`} prefetch={true}>
                 <img
                   src={magnet.logo || '/placeholder.jpg'}
                   alt={magnet.name}
