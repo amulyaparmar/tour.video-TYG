@@ -16,22 +16,22 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "Dashboard",
     url: "/dashboard",
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Your Community",
     url: "#",
     icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "Your Team",
     url: "#",
     icon: Calendar,
   },
   {
-    title: "Search",
+    title: "Tour Rooms",
     url: "#",
     icon: Search,
   },
