@@ -4,8 +4,10 @@ import { Play, Pause, Share } from 'lucide-react';
 import { ShareModal } from './ShareModal';
 import { VideoOrb } from './VideoOrb';
 import { BrowserWindow } from './BrowserWindow';
+import { useMagnetStore } from '@/store/useMagnetStore';
 
-export function HeroMedia({ startScreenObject }: { startScreenObject: any }) {
+export function HeroMedia() {
+  const { startScreenObject } = useMagnetStore();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Badge } from './Badge';
 import { Sparkles, Users, Bot, ArrowUpRight } from 'lucide-react';
+import { useMagnetStore } from '@/store/useMagnetStore';
 
 export function PropertyHeader() {
+  const { community } = useMagnetStore();
   return (
     <div className="flex items-start space-x-8 mt-12">
       <div className="flex-1 space-y-4">
@@ -20,18 +22,18 @@ export function PropertyHeader() {
         </div>
         
         <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-          Vue53
+          {community.name}
         </h1>
         
         <div className="flex items-center space-x-4">
           <a 
-            href="https://vue53.com" 
+            href={community.url} 
             target="_blank" 
             rel="noopener noreferrer"
             className="group flex items-center cursor-pointer"
           >
             <p className="text-xl text-gray-600 group-hover:text-blue-600 transition-colors duration-200">
-              https://vue53.com
+              {community.url}
             </p>
             <ArrowUpRight 
               size={20} 
@@ -40,7 +42,7 @@ export function PropertyHeader() {
           </a>
           <div className="h-12 w-12 rounded-xl overflow-hidden border-2 border-white shadow-lg">
             <img
-              src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=96&h=96&q=80"
+              src={community.img_url}
               alt="Property"
               className="w-full h-full object-cover"
             />

@@ -1,22 +1,26 @@
 import React from "react";
 import { Hammer, MessageCircle, Edit, Box, BarChart } from "lucide-react";
+import { useActionTabsStore } from "../store/useActionTabsStore";
 
 const ActionTabs = () => {
+  const { activeTab, setActiveTab } = useActionTabsStore();
+  
   const buttons = [
-    { label: "Build", icon: <Hammer />, active: true },
-    { label: "Engage", icon: <MessageCircle />, active: false },
-    { label: "Customize", icon: <Edit />, active: false },
-    { label: "Embed", icon: <Box />, active: false },
-    { label: "Analytics", icon: <BarChart />, active: false },
+    { label: "Build", icon: <Hammer /> },
+    { label: "Engage", icon: <MessageCircle /> },
+    { label: "Customize", icon: <Edit /> },
+    { label: "Embed", icon: <Box /> },
+    { label: "Analytics", icon: <BarChart /> },
   ];
 
   return (
     <div className="flex space-x-4 bg-white pb-8 rounded-lg ">
-      {buttons.map((button, index) => (
+      {buttons.map((button) => (
         <button
-          key={index}
+          key={button.label}
+          onClick={() => setActiveTab(button.label)}
           className={`flex items-center px-4 py-2 rounded-lg font-medium text-sm transition-all ${
-            button.active
+            activeTab === button.label
               ? "bg-blue-500 text-white"
               : "bg-gray-100 text-gray-600 hover:bg-gray-200"
           }`}

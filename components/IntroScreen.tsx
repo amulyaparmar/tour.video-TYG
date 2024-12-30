@@ -6,7 +6,7 @@ import { InboxPreview } from './previews/InboxPreview';
 import { PropertyHeader } from './PropertyHeader';
 import { ActionButtons } from './ActionButtons';
 
-export function IntroScreen({ startScreenObject }: { startScreenObject: any }) {
+export function IntroScreen() {
   return (
     // bg-gradient-to-br from-blue-50 via-white to-purple-50 
     <div className="min-h-[calc(100vh-1rem)] flex items-center p-8">
@@ -35,7 +35,7 @@ export function IntroScreen({ startScreenObject }: { startScreenObject: any }) {
             </div>
           </div>
 
-          <HeroMedia startScreenObject={startScreenObject} />
+          <HeroMedia  />
         </div>
 
         <div className="grid grid-cols-2 gap-8">

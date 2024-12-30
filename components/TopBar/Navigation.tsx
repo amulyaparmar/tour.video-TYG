@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ButtonGroup } from './ButtonGroup';
 import { SearchAndCall } from './SearchAndCall';
 import { SupportButton } from './SupportButton';
+import { useActionTabsStore } from '../../store/useActionTabsStore';
 
 export function Navigation() {
-  const [activeTab, setActiveTab] = useState('inbox');
+  const { activeTab, setActiveTab } = useActionTabsStore();
 
   const buttons = [
     { label: 'Inbox', isActive: activeTab === 'inbox', onClick: () => setActiveTab('inbox'), badge: 4 },

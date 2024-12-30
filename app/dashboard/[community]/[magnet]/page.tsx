@@ -8,6 +8,9 @@ import ActionTabs from '../../../../components/ActionTabs'
 import { TopBar } from '@/components/TopBar/TopBar';
 import { IntroScreen } from '@/components/IntroScreen';
 import { useEffect, useState } from 'react';
+import { useMagnetStore } from '@/store/useMagnetStore'
+import { useActionTabsStore } from '@/store/useActionTabsStore';
+import LeadsTable from '@/components/LeadsTable';
 
 type Screen = {
   key: string;
@@ -40,6 +43,12 @@ type Magnet = {
       };
     };
   };
+}
+
+type Community = {
+  id: string;
+  name: string;
+  // Add other community fields as needed
 }
 
 function extractTemplateData(magnet_details: any) {
@@ -115,31 +124,85 @@ async function getMagnet(uuid: string) {
   return magnet as Magnet;
 }
 
-export default async function ContentLibraryPage({
+async function getCommunity(id: string) {
+  console.log('Fetching community with ID:', id);
+  
+  const { data: community, error } = await supabase
+    .from('Community')
+    .select('*')
+    .eq('id', id)
+    .single();
+  
+  if (error) {
+    console.error('Error fetching community:', error);
+    return null;
+  }
+  
+  console.log('Retrieved community:', community);
+  return community as Community;
+}
+
+export default function ContentLibraryPage({
   params
 }: {
   params: { magnet: string; community: string }
 }) {
-  console.log('Rendering page with params:', params);
+  const { setMagnet, setCommunity, setStartScreenObject, magnet, community } = useMagnetStore()
+  const [categories, setCategories] = useState<string[]>([])
+  const [screensByCategory, setScreensByCategory] = useState<Record<string, CategoryData>>({})
+  const { activeTab, setActiveTab } = useActionTabsStore();
   
-  const magnet = await getMagnet(params.magnet);
-  
-  if (!magnet) return notFound();
+  useEffect(() => {
+    async function fetchData() {
+      const [magnetData, communityData] = await Promise.all([
+        getMagnet(params.magnet),
+        getCommunity(params.community)
+      ]);
+      
+      if (!magnetData || !communityData) {
+        notFound();
+        return;
+      }
 
-  const { categories, screensByCategory, startScreenObject } = extractTemplateData(magnet.magnet_details);
+      const { categories, screensByCategory, startScreenObject } = extractTemplateData(magnetData.magnet_details);
+
+      // Set the store values
+      setMagnet(magnetData)
+      setCommunity(communityData)
+      setStartScreenObject(startScreenObject)
+      
+      // Set local state
+      setCategories(categories)
+      setScreensByCategory(screensByCategory)
+    }
+
+    fetchData();
+  }, [params.magnet, params.community, setMagnet, setCommunity, setStartScreenObject]);
+
+  if (!magnet || !community) {
+    return <div>Loading...</div>;
+  }
+
+
 
   return (
     <div className="flex flex-col h-screen">
       <TopBar />
-      <div className="flex mt-[100px] flex-col items-center justify-center h-screen">
-      <IntroScreen startScreenObject={startScreenObject}/>
-      </div>
-        <div className="p-6 max-w-7xl mx-auto">
+      {activeTab === 'inbox' &&<div className="flex mt-[100px] flex-col items-center justify-center h-screen">
+        <IntroScreen />
+      </div>}
+        
+      {activeTab === 'leads' &&<div className="flex mt-[100px] flex-col  h-screen">
+         <LeadsTable />
+      </div>}
+        
+        {/* Tour TYG */}
+      {activeTab === 'tour' && <div className="p-6 max-w-7xl mx-auto">
           {/* Magnet Title */}
           <div className="mb-8">
           <h1 className="text-3xl font-bold">{magnet.name}</h1>
           <p className="text-gray-600">Content Library</p>
-        </div>
+          </div>
 
         {/* Search and Add Category Header */}
         <div className="flex justify-between items-center mb-8">
@@ -156,7 +219,6 @@ export default async function ContentLibraryPage({
         </div>
 
         {/** Button */}
-        <ActionTabs />
 
         {/* Content Sections */}
         {categories.map((categoryKey) => {
@@ -216,6 +278,7 @@ export default async function ContentLibraryPage({
           );
         })}
       </div>
+      }
     </div>
   );
 }
