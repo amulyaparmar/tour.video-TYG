@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Edit3 } from 'lucide-react';
 
-export function VideoOrb() {
+export function VideoOrb({ startScreenObject }: { startScreenObject: any }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -15,11 +15,16 @@ export function VideoOrb() {
           transition-transform duration-300 group-hover:scale-105"
         title="Click to edit thumbnail"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=384&h=384&q=80" 
-          alt="Special offer thumbnail"
+        <video 
           className="w-full h-full object-cover"
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={startScreenObject.img || startScreenObject.gif}
+        >
+          <source src={`${startScreenObject.video}#t=4`} type="video/mp4" />
+        </video>
         
         {/* Special Offer Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center rounded-full">

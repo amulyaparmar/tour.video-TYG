@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client'
 
 import { supabase } from '@/utils/supabase';
@@ -5,6 +6,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ActionTabs from '../../../../components/ActionTabs'
 import { TopBar } from '@/components/TopBar/TopBar';
+import { IntroScreen } from '@/components/IntroScreen';
+import { useEffect, useState } from 'react';
 
 type Screen = {
   key: string;
@@ -40,13 +43,14 @@ type Magnet = {
 }
 
 function extractTemplateData(magnet_details: any) {
-  console.log('Processing magnet_details:', magnet_details);
+  // console.log('Processing magnet_details:', magnet_details);
   
   if (!magnet_details?.template) {
     console.log('No template found in magnet_details');
     return {
       categories: [],
-      screensByCategory: {}
+      screensByCategory: {},
+      startScreenObject: null
     };
   }
 
@@ -54,14 +58,19 @@ function extractTemplateData(magnet_details: any) {
   const categories = template.category_keys || [];
   const screensByCategory: Record<string, CategoryData> = {};
   
-  console.log('Found categories:', categories);
+  // Extract startScreen
+  const startScreenPath = template.default_config?.startScreen || "intro.main";
+  const [startCategory, startScreen] = startScreenPath.split('.');
+  const startScreenObject = template.categories[startCategory]?.screens[startScreen] || null;
+  
+  // console.log('Found categories:', categories);
 
   categories.forEach(categoryKey => {
     const category = template.categories[categoryKey];
     const screenKeys = category.screen_keys || [];
     
-    console.log(`Processing category ${categoryKey}:`, category);
-    console.log(`Screen keys for ${categoryKey}:`, screenKeys);
+    // console.log(`Processing category ${categoryKey}:`, category);
+    // console.log(`Screen keys for ${categoryKey}:`, screenKeys);
 
     const screens = screenKeys.map(screenKey => {
       const screen = category.screens[screenKey];
@@ -78,9 +87,12 @@ function extractTemplateData(magnet_details: any) {
     };
   });
 
+  // console.log('Screens by category:', screensByCategory, categories);
+  console.log('startScreenObject TYG! : ', startScreenObject);
   return {
     categories,
-    screensByCategory
+    screensByCategory,
+    startScreenObject
   };
 }
 
@@ -99,6 +111,7 @@ async function getMagnet(uuid: string) {
   }
   
   console.log('Retrieved magnet:', magnet);
+  console.log('Magnet data TYG:', magnet.magnet_details.template.default_config, magnet?.integration_details,magnet?.magnet_details?.template );
   return magnet as Magnet;
 }
 
@@ -113,13 +126,14 @@ export default async function ContentLibraryPage({
   
   if (!magnet) return notFound();
 
-  const { categories, screensByCategory } = extractTemplateData(magnet.magnet_details);
-  
-  console.log('Processed template data:', { categories, screensByCategory });
+  const { categories, screensByCategory, startScreenObject } = extractTemplateData(magnet.magnet_details);
 
   return (
     <div className="flex flex-col h-screen">
       <TopBar />
+      <div className="flex mt-[100px] flex-col items-center justify-center h-screen">
+      <IntroScreen startScreenObject={startScreenObject}/>
+      </div>
         <div className="p-6 max-w-7xl mx-auto">
           {/* Magnet Title */}
           <div className="mb-8">

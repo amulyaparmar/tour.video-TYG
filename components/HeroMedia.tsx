@@ -5,7 +5,7 @@ import { ShareModal } from './ShareModal';
 import { VideoOrb } from './VideoOrb';
 import { BrowserWindow } from './BrowserWindow';
 
-export function HeroMedia() {
+export function HeroMedia({ startScreenObject }: { startScreenObject: any }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -46,7 +46,8 @@ export function HeroMedia() {
           className="w-full object-cover aspect-[4/3]"
         >
           <source 
-            src="https://www.sample-videos.com/video321/mp4/480/big_buck_bunny_480p_20mb.mp4" 
+            src={startScreenObject?.video}
+            // src={startScreenObject?.video_url || "https://www.sample-videos.com/video321/mp4/480/big_buck_bunny_480p_20mb.mp4"}
             type="video/mp4" 
           />
           Your browser does not support the video tag.
@@ -77,7 +78,8 @@ export function HeroMedia() {
           <Share size={20} className="text-white" />
         </button>
 
-        {isVideoLoaded && <VideoOrb />}
+        {/* {isVideoLoaded && <VideoOrb />} */}
+        <VideoOrb startScreenObject={startScreenObject} />
         
         <ShareModal isOpen={showShareModal} onClose={() => setShowShareModal(false)} />
       </motion.div>

@@ -4,7 +4,7 @@ import { Sparkles, Users, Bot, ArrowUpRight } from 'lucide-react';
 
 export function PropertyHeader() {
   return (
-    <div className="flex items-start space-x-8">
+    <div className="flex items-start space-x-8 mt-12">
       <div className="flex-1 space-y-4">
         <div className="flex items-center space-x-4">
           <Badge 
