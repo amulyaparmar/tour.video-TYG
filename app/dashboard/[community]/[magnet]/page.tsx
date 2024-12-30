@@ -192,7 +192,7 @@ export default function ContentLibraryPage({
         <IntroScreen />
       </div>}
         
-      {activeTab === 'leads' &&<div className="flex mt-[100px] flex-col  h-screen">
+      {activeTab === 'leads' &&<div className="flex mt-[30px] px-4 flex-col  h-screen">
          <LeadsTable />
       </div>}
         
