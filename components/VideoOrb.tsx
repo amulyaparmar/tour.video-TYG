@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Edit3 } from 'lucide-react';
+import { useMagnetStore } from '@/store/useMagnetStore';
 
 export function VideoOrb({ startScreenObject }: { startScreenObject: any }) {
+  const { magnet } = useMagnetStore();
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -28,8 +30,8 @@ export function VideoOrb({ startScreenObject }: { startScreenObject: any }) {
         
         {/* Special Offer Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center rounded-full">
-          <span className="text-3xl font-bold">$250</span>
-          <span className="text-sm font-medium">Special Offer</span>
+          {/* <span className="text-3xl font-bold">$250</span> */}
+          <span className="text-lg font-medium">{magnet?.magnet_details?.template?.default_config?.buttonLabel || "Take a Virtual Tour"}</span>
         </div>
         
         {/* Hover Overlay */}
