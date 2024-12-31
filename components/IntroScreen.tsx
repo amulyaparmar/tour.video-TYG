@@ -6,8 +6,10 @@ import { InboxPreview } from './previews/InboxPreview';
 import { PropertyHeader } from './PropertyHeader';
 import { ActionButtons } from './ActionButtons';
 import { TourPreview } from './previews/TourPreview';
+import { useActionTabsStore } from '@/store/useActionTabsStore';
 
 export function IntroScreen() {
+  const { activeTab, setActiveTab } = useActionTabsStore();
   return (
     // bg-gradient-to-br from-blue-50 via-white to-purple-50 
     <div className="min-h-[calc(100vh-1rem)] flex items-center p-8">
@@ -21,12 +23,20 @@ export function IntroScreen() {
               <PropertyHeader />
 
               <div className="flex items-center space-x-4">
-                <button className="px-8 py-4 bg-blue-600 text-white rounded-xl font-medium 
+                <button
+                  onClick={() => {
+                    setActiveTab('tour');
+                  }}
+                  className="px-8 py-4 bg-blue-600 text-white rounded-xl font-medium 
                   flex items-center space-x-2 hover:bg-blue-700 transform hover:-translate-y-0.5 transition-all duration-200">
                   <span>Send Tour</span>
                   <ArrowRight size={20} />
                 </button>
-                <button className="px-8 py-4 bg-white text-gray-800 rounded-xl font-medium 
+                <button 
+                  onClick={() => {
+                    setActiveTab('leads');
+                  }}
+                  className="px-8 py-4 bg-white text-gray-800 rounded-xl font-medium 
                   flex items-center space-x-2 hover:bg-gray-50 transform hover:-translate-y-0.5 transition-all duration-200
                   border border-gray-200">
                   <Code size={20} />
