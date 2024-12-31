@@ -2,9 +2,11 @@ import React from 'react';
 import { Badge } from './Badge';
 import { Sparkles, Users, Bot, ArrowUpRight } from 'lucide-react';
 import { useMagnetStore } from '@/store/useMagnetStore';
+import { useVisitorStore } from '@/store/useVisitorStore';
 
 export function PropertyHeader() {
   const { community } = useMagnetStore();
+  const { activevisitors } = useVisitorStore()
   return (
     <div className="flex items-start space-x-8 mt-12">
       <div className="flex-1 space-y-4">
@@ -57,7 +59,7 @@ export function PropertyHeader() {
               <Badge 
             icon={Users}
             text="Live Visitors"
-            count={4}
+            count={activevisitors?.length}
             showGlowingIndicator
           />
           <Badge 
