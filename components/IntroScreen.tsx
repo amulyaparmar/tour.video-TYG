@@ -5,6 +5,7 @@ import { LeadsPreview } from './previews/LeadsPreview';
 import { InboxPreview } from './previews/InboxPreview';
 import { PropertyHeader } from './PropertyHeader';
 import { ActionButtons } from './ActionButtons';
+import { TourPreview } from './previews/TourPreview';
 
 export function IntroScreen() {
   return (
@@ -39,7 +40,8 @@ export function IntroScreen() {
         </div>
 
         <div className="grid grid-cols-2 gap-8">
-          <InboxPreview />
+          {/* <InboxPreview /> */}
+          <TourPreview />
           <LeadsPreview />
         </div>
 

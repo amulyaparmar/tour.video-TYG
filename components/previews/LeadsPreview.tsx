@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { User2, ArrowUpRight } from 'lucide-react';
 import { formatRelativeTime } from '../../utils/dateUtils';
+import { useMagnetStore } from '@/store/useMagnetStore';
+import { supabase } from '@/utils/supabase';
 
 interface Lead {
   name: string;
@@ -31,6 +33,44 @@ const leads: Lead[] = [
 ];
 
 export function LeadsPreview() {
+  const magnet = useMagnetStore((state) => state.magnet);
+  const [leads, setLeads] = useState<Lead[]>([]);
+
+  useEffect(() => {
+    const fetchLeads = async () => {
+      if (!magnet?.uuid) return;
+      
+      try {
+        const { data, error } = await supabase
+          .from('Lead')
+          .select(`
+            name,
+            email,
+            time
+          `)
+          .order('time', { ascending: false })
+          .eq('magnet_uuid', magnet.uuid)
+          .limit(3);
+
+        if (error) {
+          console.error('Error fetching leads:', error);
+          return;
+        }
+
+        setLeads(data.map(lead => ({
+          name: lead.name,
+          email: lead.email,
+          status: 'New',
+          timestamp: new Date(lead.time)
+        })));
+      } catch (error) {
+        console.error('Error fetching leads:', error);
+      }
+    };
+
+    fetchLeads();
+  }, [magnet.uuid]);
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="p-4 border-b border-gray-100 flex justify-between items-center">
