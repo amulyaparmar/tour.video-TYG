@@ -1,11 +1,14 @@
 import React from 'react';
 import { Circle } from 'lucide-react';
+import { useMagnetStore } from '@/store/useMagnetStore';
 
 interface BrowserWindowProps {
   children: React.ReactNode;
 }
 
 export function BrowserWindow({ children }: BrowserWindowProps) {
+  const { magnet, community } = useMagnetStore();  
+
   return (
     <div className="rounded-2xl shadow-2xl overflow-hidden border border-gray-200/50 bg-white">
       {/* Browser Header */}
@@ -18,7 +21,7 @@ export function BrowserWindow({ children }: BrowserWindowProps) {
           </div>
           <div className="flex-1 mx-auto max-w-sm">
             <div className="bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-md text-sm text-gray-500 text-center">
-              tour.video/@vue53
+              tour.video/{magnet?.alias ? `@${magnet?.alias}` : magnet?.uuid}
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ export function PropertyHeader() {
   return (
     <div className="flex items-start space-x-8 mt-12">
       <div className="flex-1 space-y-4">
-        <div className="flex items-center space-x-4">
+        {/* <div className="flex items-center space-x-4">
           <Badge 
             icon={Sparkles}
             text="👋 Welcome Back, Amulya"
@@ -19,9 +19,9 @@ export function PropertyHeader() {
             count={4}
             showGlowingIndicator
           />
-        </div>
+        </div> */}
         
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+        <h1 className="mt-12 text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
           {community.name}
         </h1>
         
@@ -50,9 +50,15 @@ export function PropertyHeader() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Badge 
+          {/* <Badge 
             icon={Bot}
             text="Update Knowledgebase"
+          /> */}
+              <Badge 
+            icon={Users}
+            text="Live Visitors"
+            count={4}
+            showGlowingIndicator
           />
           <Badge 
             icon={Sparkles}
