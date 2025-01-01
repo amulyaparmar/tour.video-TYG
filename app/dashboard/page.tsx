@@ -114,8 +114,8 @@ export default async function DashboardPage({
                     priority={true}
                   />
                 </div>
-                <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="bg-white text-gray-800 px-6 py-2 rounded-full font-medium transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 z-20 bg-black bg-opacity-35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="bg-white z-30 text-gray-800 px-6 py-2 rounded-full font-medium transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     View Tour
                   </span>
                 </div>
