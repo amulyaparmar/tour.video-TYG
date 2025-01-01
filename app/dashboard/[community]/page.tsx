@@ -1,6 +1,8 @@
 import { supabase } from '@/utils/supabase';
 import Link from 'next/link';
 import {AppSidebar} from '../../../components/sidebar-menu'
+import { redirect } from 'next/navigation';
+
 type Magnet = {
   uuid: string;
   name: string;
@@ -58,6 +60,10 @@ export default async function DashboardPage({
   params: { community: string }
 }) {
   const magnets = await getMagnets(params.community);
+
+  if (magnets.length > 0) {
+    redirect(`/dashboard/${params.community}/${magnets?.[0]?.uuid}`);
+  }
 
   return (
     <>
