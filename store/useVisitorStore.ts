@@ -8,14 +8,19 @@ interface VisitorStore {
   }
 
 export const useVisitorStore = create<VisitorStore>((set) => ({
-    activevisitors: [],
+    activevisitors: null,
     setactivevisitors:  (activevisitors : any) => set({ activevisitors }),
     // Function to handle new member join
     handleJoin: (newPresences : any) => set((state : any) => {
+      if(state.activevisitors === null) {
+        return {
+          activevisitors: [...newPresences]
+        };
+      }
       // Check if all newPresences already exist in the current state
       const hasDuplicateVisitors = newPresences.every((item : any) => {
         const visitorId = item.visitorId ?? item.visitor_id;
-        return state.activevisitors.findIndex((visitor : any) => (visitor.visitorId ?? visitor.visitor_id) === visitorId) !== -1;
+        return state.activevisitors?.findIndex((visitor : any) => (visitor.visitorId ?? visitor.visitor_id) === visitorId) !== -1;
       });
    
       // If all visitors from newPresences already exist, return the previous state
@@ -28,7 +33,7 @@ export const useVisitorStore = create<VisitorStore>((set) => ({
         const visitorId = item.visitorId ?? item.visitor_id;
    
         // If visitor already exists, return the previous state visitor
-        const existingVisitorIndex = state.activevisitors.findIndex((visitor : any) => (visitor.visitorId ?? visitor.visitor_id) === visitorId);
+        const existingVisitorIndex = state.activevisitors?.findIndex((visitor : any) => (visitor.visitorId ?? visitor.visitor_id) === visitorId);
    
         if (existingVisitorIndex !== -1) {
           // Visitor already exists, return the existing visitor (no changes)
