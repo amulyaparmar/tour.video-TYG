@@ -10,7 +10,7 @@ export function ShareModal({ isOpen, onClose }: ShareModalProps) {
   const [shareMethod, setShareMethod] = useState<'email' | 'message'>('email');
   const [recipient, setRecipient] = useState('');
   const [copied, setCopied] = useState(false);
-  const shareUrl = "https://new-videomagnet-658y.onrender.com/dashboard/community/magnet/page";
+  const shareUrl = "https://new-videomagnet.onrender.com/dashboard/community/magnet/page";
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareUrl);

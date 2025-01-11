@@ -32,7 +32,7 @@ export default function AliasPage({ params, searchParams }) {
   // useEffect(() => {
   //   // Create and append the script element for the Tour widget
   //   const script = document.createElement('script');
-  //   script.src = 'https://new-videomagnet-658y.onrender.com/lease-magnet.umd.js';
+  //   script.src = 'https://new-videomagnet.onrender.com/lease-magnet.umd.js';
   //   script.async = true;
     
   //   // Initialize the widget once the script loads
